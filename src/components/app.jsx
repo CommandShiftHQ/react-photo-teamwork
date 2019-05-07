@@ -67,8 +67,8 @@ class App extends React.Component {
           />
           <Route
             exact
-            path="/image"
-            component={ImageDetails}
+            path="/image/:id"
+            render={(props) => <ImageDetails {...props} />}
           />
           <Route exact path="/sign-up" component={SignUp} />
 

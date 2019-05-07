@@ -9,7 +9,6 @@ class ImageDetails extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      imageId: '5c01bcadf4318f00164926fb',
       user: {},
       src: '',
       thumb: '',
@@ -29,11 +28,13 @@ class ImageDetails extends React.Component {
   };
 
   handleCommentSubmit = (comment) => {
+    console.log(this.state.comments);
     this.state.comments.push(comment);
   };
 
   componentDidMount() {
-    axios.get(`${URL}/images/${this.state.imageId}`)
+    console.log(this.props.imageId);
+    axios.get(`${URL}/images/${this.props.match.params.id}`)
       .then(response => {
         this.setState({
           user: response.data.user,
