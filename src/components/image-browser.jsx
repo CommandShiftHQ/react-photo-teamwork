@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faComment, faHeart } from '@fortawesome/free-solid-svg-icons';
@@ -43,16 +44,18 @@ render() {
             <div className="image-frame">
               <img src={image.thumb} />
             </div>
-            <div className="thumbnail-stats">
-              <span>
-                <FontAwesomeIcon icon="comment" className="icon"/>
-                {image.comments.length}
-              </span>
-              <span>
-                <FontAwesomeIcon icon="heart" className="icon"/>
-                {image.likes}
-              </span>
-            </div>
+            <Link to={`/image/${image._id}`} key={image._id}>
+              <div className="thumbnail-stats">
+                <span>
+                  <FontAwesomeIcon icon="comment" className="icon"/>
+                  {image.comments.length}
+                </span>
+                <span>
+                  <FontAwesomeIcon icon="heart" className="icon"/>
+                  {image.likes}
+                </span>
+              </div>
+            </Link>
           </div>
         );
       })}
