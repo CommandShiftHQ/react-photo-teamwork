@@ -73,6 +73,7 @@ class ImageDetails extends React.Component {
     }
   };
 
+
   getAPIInfo = () => {
     axios.get(`${URL}/images/${this.props.match.params.id}`)
       .then(response => {
@@ -98,6 +99,7 @@ class ImageDetails extends React.Component {
   }
 
   render() {
+    console.log(this.props.match);
     const {
       imageId,
       user,

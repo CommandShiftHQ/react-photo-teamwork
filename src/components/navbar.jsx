@@ -10,7 +10,16 @@ const NavBar = ({ isLoggedIn }) => {
           isLoggedIn ?
             (
               <React.Fragment>
-                <span>[insert links here]</span>
+                <div>
+                  <Link to="/gallery">
+                    Gallery
+                  </Link>
+                </div>
+                <div>
+                  <Link to="/upload">
+                    Upload image
+                  </Link>
+                </div>
               </React.Fragment>
             ) :
             (

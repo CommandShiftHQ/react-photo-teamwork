@@ -6,10 +6,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // import { faComment, faHeart } from '@fortawesome/free-solid-svg-icons';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { far } from '@fortawesome/free-regular-svg-icons';
+
 import '../css/image-browser.css';
 
 // library.add(faComment, faHeart);
 library.add(fas, far);
+
 
 const URL = 'http://mcr-codes-image-sharing-api.herokuapp.com/images';
 
@@ -42,12 +44,12 @@ componentDidMount() {
 render() {
   return (
     <div className="image-grid">
-      {this.state.images.map(image => {
+      {props.images.map(image => {
         return (
-          <div key={image._id} className="thumbnail-image">
-            <div className="image-frame">
-              <img src={image.thumb} />
-            </div>
+            <div key={image._id} className="thumbnail-image">
+              <div className="image-frame">
+                <img src={image.thumb} />
+              </div>
             <Link to={`/image/${image._id}`} key={image._id}>
               <div className="thumbnail-stats">
                 <span>
@@ -65,7 +67,6 @@ render() {
       })}
     </div>
   );
-}
-}
+};
 
 export default ImageBrowser;
