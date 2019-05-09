@@ -37,16 +37,15 @@ class ImageDetails extends React.Component {
   };
 
   handleCommentSubmit = (comment) => {
-    const commentURL = `${URL}/images/${this.state.imageId}/comments`;
+    const URL2 = `http://mcr-codes-image-sharing-api.herokuapp.com/images/${this.state.imageId}/comments`;
     const config = {
       headers: {
-        'authorization': TokenManager.getToken(),
+        authorization: TokenManager.getToken(),
         'content-type': 'application/json',
       },
     };
-    console.log(commentURL);
-    axios.post(commentURL, { content: comment }, config)
-      .then(response => console.log(response.data))
+    axios.post(URL2, { content: comment }, config)
+      .then(() => this.apiCall())
       .catch((error) => console.log(error));
   };
 
@@ -56,12 +55,12 @@ class ImageDetails extends React.Component {
     });
   };
 
-  componentDidMount() {
+  apiCall = () => {
     axios.get(`${URL}/images/${this.props.match.params.id}`)
       .then(response => {
         this.setState({
-          imageId: response.data._id,
           user: response.data.user,
+          imageId: response.data._id,
           src: response.data.src,
           thumb: response.data.thumb,
           caption: response.data.caption,
@@ -71,10 +70,19 @@ class ImageDetails extends React.Component {
           likes: response.data.likes,
           isLiked: response.data.isLiked,
         });
+      })
+      .catch(err => {
+        console.log(err);
       });
+  };
+
+  componentDidMount() {
+    this.apiCall();
   }
 
   render() {
+    console.log('heyhey');
+    console.log(this.state);
     const {
       imageId,
       user,
@@ -103,7 +111,6 @@ class ImageDetails extends React.Component {
           likes={likes}
           imageLike={this.handleImageLike}
         />
-        <span>#{tags}</span>
         <Comments
           className="comments"
           comments={comments}

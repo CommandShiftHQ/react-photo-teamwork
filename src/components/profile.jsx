@@ -44,24 +44,22 @@ class Profile extends React.Component {
   render() {
     return (
       <div className="profile-info">
-<<<<<<< HEAD
         <div className="name">
           Name: {this.state.user.firstName} {this.state.user.lastName}
-=======
-        <div className="user-info">
-          <img src={this.state.user.avatar} height="150" width="150 " />
-          <div className="Name">
+          <div className="user-info">
+            <img src={this.state.user.avatar} height="150" width="150 " />
+            <div className="Name">
             Name: {this.state.user.firstName} {this.state.user.lastName}
+            </div>
+            <div className="bio">Bio: {this.state.user.bio} </div>
           </div>
-          <div className="bio">Bio: {this.state.user.bio} </div>
->>>>>>> @{-1}
-        </div>
-        <div style={container}>
-          {this.state.user.images.map(image => (
-            <Link to={`/image/${image._id}`} key={image._id}>
-              <img style={imagesInUser} src={image.src} />
-            </Link>
-          ))}
+          <div style={container}>
+            {this.state.user.images.map(image => (
+              <Link to={`/image/${image._id}`} key={image._id}>
+                <img style={imagesInUser} src={image.src} />
+              </Link>
+            ))}
+          </div>
         </div>
       </div>
     );
