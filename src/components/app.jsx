@@ -109,7 +109,7 @@ class App extends React.Component {
           <Route
             exact
             path="/gallery"
-            render={props => <ImageBrowser {...props} images={this.state.userImages} />}
+            render={props => <ImageBrowser {...props} images={this.state.images} />}
           />
           <Route
             exact

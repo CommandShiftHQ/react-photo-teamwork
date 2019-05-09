@@ -42,9 +42,11 @@ componentDidMount() {
 }
 
 render() {
+  console.log(this.props, 'props');
   return (
     <div className="image-grid">
-      {props.images.map(image => {
+      {this.props.images.map(image => {
+        console.log(image);
         return (
             <div key={image._id} className="thumbnail-image">
               <div className="image-frame">
@@ -68,5 +70,5 @@ render() {
     </div>
   );
 };
-
+}
 export default ImageBrowser;
