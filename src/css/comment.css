@@ -1,0 +1,24 @@
+.comment {
+  height: 60px;
+  min-height: 40px;
+  flex-shrink: 1;
+}
+
+.comment-div {
+  padding: 10px 10px 0 10px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.content {
+  margin: 8px 0 0 0;
+}
+.comment-data {
+  padding: 0 10px;
+  display: flex;
+  justify-content: space-around;
+  color: #b3b3b3;
+  font-size: 0.9em;
+  font-weight: bold;
+}

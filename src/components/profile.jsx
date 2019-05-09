@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const container = {
   display: 'flex',
@@ -20,6 +21,7 @@ class Profile extends React.Component {
       user: {
         images: [],
       },
+      clickImage: false,
     };
   }
 
@@ -32,10 +34,21 @@ class Profile extends React.Component {
       this.setState({
         user: response.data,
       });
+      // console.log(this.state.user.images);
     });
   };
 
+  componentDidMount() {
+    this.getProfileInfo();
+  }
+
+  clickedImage = () => {
+    // console.log('this is being called');
+    this.setState({ clickImage: true });
+  };
+
   render() {
+    // console.log(this.state.clickImage);
     return (
       <div className="profile-info">
         <div className="Name">
@@ -45,7 +58,9 @@ class Profile extends React.Component {
         <img src={this.state.user.avatar} height="150" width="150 " />
         <div style={container}>
           {this.state.user.images.map(image => (
-            <img style={imagesInUser} key={image._id} src={image.src} />
+            <Link to={`/image/${image._id}`} key={image._id}>
+              <img style={imagesInUser} src={image.src} />
+            </Link>
           ))}
         </div>
       </div>
