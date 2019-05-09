@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const NavBar = ({ isLoggedIn }) => {
+const NavBar = ({ isLoggedIn, logout }) => {
   return (
     <header>
       <h1>[photo app name here]</h1>
@@ -10,7 +10,7 @@ const NavBar = ({ isLoggedIn }) => {
           isLoggedIn ?
             (
               <React.Fragment>
-                <span>[insert links here]</span>
+                <button onClick={logout}>Logout</button>
               </React.Fragment>
             ) :
             (

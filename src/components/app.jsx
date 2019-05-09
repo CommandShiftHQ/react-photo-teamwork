@@ -40,11 +40,13 @@ class App extends React.Component {
         <NavBar
           isLoggedIn={this.isLoggedIn()}
           user={this.state.user}
-          onLogout={this.handleLogout}
+          logout={this.handleLogout}
         />
 
         {this.isLoggedIn() ? (
-          <Profile id={this.state.user._id} />
+          <div>
+            <Profile id={this.state.user._id} />
+          </div>
         ) : (
           <div>You are not in</div>
         )}
