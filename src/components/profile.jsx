@@ -7,6 +7,9 @@ const container = {
   display: 'flex',
   // justifyContent: 'flex-start',
   flewWrap: 'wrap',
+=======
+  justifyContent: 'flex-start',
+  flex: 'wrap',
   background: 'white',
   padding: '5px',
   justifyContent: 'center',

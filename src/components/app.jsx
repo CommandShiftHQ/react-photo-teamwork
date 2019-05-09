@@ -2,12 +2,13 @@ import React from 'react';
 import NavBar from './navbar';
 import Profile from './profile';
 import SignUp from '../components/sign-up';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, withRouter } from 'react-router-dom';
 import Login from '../components/login';
 import TokenManager from '../utils/token-manager';
 import ImageDetails from '../components/image-details';
 import ImageBrowser from './image-browser';
 import ImageUpload from './upload';
+import SearchForm from './search';
 import axios from 'axios';
 
 const URL = 'http://mcr-codes-image-sharing-api.herokuapp.com';
@@ -19,6 +20,7 @@ class App extends React.Component {
       user: null,
       images: [],
       userImages: [],
+      searchQuery: [],
       error: false,
     };
   }
@@ -59,6 +61,18 @@ class App extends React.Component {
       });
   };
 
+  handleSearchForm = (searchString) => {
+    axios.get(`${URL}/images?tags=${searchString}`)
+      .then(response => {
+        console.log(response);
+        this.setState({
+          images: response.data,
+        }, () => this.props.history.push('/'));
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   handleLogin = () => {
     this.setState({ user: TokenManager.getTokenPayload() });
@@ -88,6 +102,10 @@ class App extends React.Component {
         ) : (
           <div>You are not logged in.</div>
         )}
+
+        <SearchForm
+          handleSearchForm={this.handleSearchForm}
+        />
 
         <Switch>
           <Route
@@ -120,6 +138,11 @@ class App extends React.Component {
             path="/image/:id"
             render={(props) => <ImageDetails {...props} />}
           />
+          <Route
+            exact
+            path="/images/"
+            render={(props) => <ImageBrowser {...props} searchQuery={this.state.searchQuery} />}
+          />
           <Route exact path="/sign-up" component={SignUp} />
 
 
@@ -129,4 +152,4 @@ class App extends React.Component {
   }
 };
 
-export default App;
+export default withRouter(App);

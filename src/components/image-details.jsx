@@ -40,7 +40,7 @@ class ImageDetails extends React.Component {
     const commentURL = `${URL}/images/${this.state.imageId}/comments`;
     const config = {
       headers: {
-        'authorization': TokenManager.getToken(),
+        authorization: TokenManager.getToken(),
         'content-type': 'application/json',
       },
     };
@@ -93,6 +93,7 @@ class ImageDetails extends React.Component {
     }
 
     return (
+
       <div>
         <Image src={src} user={user.firstName} />
         <span>
@@ -111,6 +112,28 @@ class ImageDetails extends React.Component {
           onLike={this.handleCommentLike}
           onSubmit={this.handleCommentSubmit}
         />
+
+      <div className="img-details">
+        <Image src={src} user={user.firstName} className="full-img" />
+        <div className="img-text">
+          <div className="likes-comments">
+            <span>
+              <FontAwesomeIcon icon="comment" className="icon-comment" />
+              {comments.length}
+            </span>
+            <Likes
+              likes={likes}
+              imageLike={this.handleImageLike}
+            />
+          </div>
+          <Comments
+            className="comments"
+            comments={comments}
+            isLiked={isLiked}
+            onLike={this.handleCommentLike}
+            onSubmit={this.handleCommentSubmit}
+          />
+        </div>
       </div>
     );
   }
