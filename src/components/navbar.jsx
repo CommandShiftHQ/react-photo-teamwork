@@ -10,6 +10,16 @@ const NavBar = ({ isLoggedIn, logout }) => {
           isLoggedIn ?
             (
               <React.Fragment>
+                <div>
+                  <Link to="/gallery">
+                    Gallery
+                  </Link>
+                </div>
+                <div>
+                  <Link to="/upload">
+                    Upload image
+                  </Link>
+                </div>
                 <button onClick={logout}>Logout</button>
               </React.Fragment>
             ) :

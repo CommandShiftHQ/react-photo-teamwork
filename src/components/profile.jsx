@@ -1,9 +1,6 @@
 import React from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import ImageDetails from './image-details';
-
-const URL = 'http://mcr-codes-image-sharing-api.herokuapp.com/users/';
 
 const container = {
   display: 'flex',
@@ -15,6 +12,8 @@ const imagesInUser = {
   height: '100px',
 };
 
+const URL = 'http://mcr-codes-image-sharing-api.herokuapp.com/users/';
+
 class Profile extends React.Component {
   constructor(props) {
     super(props);
@@ -24,6 +23,10 @@ class Profile extends React.Component {
       },
       clickImage: false,
     };
+  }
+
+  componentDidMount() {
+    this.getProfileInfo();
   }
 
   getProfileInfo = () => {

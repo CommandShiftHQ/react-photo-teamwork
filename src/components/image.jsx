@@ -1,15 +1,11 @@
 import React from 'react';
+import '../css/image.css';
 
-const imgStyle = {
-  height: '500px',
-  width: '500px',
-};
 
-const Image = ({ src, user }) => {
+const Image = ({ src }) => {
   return (
-    <div>
-      <img src={src} style={imgStyle} />
-      <div>{user}</div>
+    <div className="imageDiv">
+      <img src={src} className="image" />
     </div>
   );
 };
