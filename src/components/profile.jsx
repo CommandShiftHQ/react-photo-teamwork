@@ -1,8 +1,6 @@
 import React from 'react';
 import axios from 'axios';
 
-const URL = 'http://mcr-codes-image-sharing-api.herokuapp.com/users/';
-
 const container = {
   display: 'flex',
   justifyContent: 'flex-start',
@@ -12,6 +10,8 @@ const imagesInUser = {
   width: '150px',
   height: '100px',
 };
+
+const URL = 'http://mcr-codes-image-sharing-api.herokuapp.com/users/';
 
 class Profile extends React.Component {
   constructor(props) {
@@ -23,6 +23,10 @@ class Profile extends React.Component {
     };
   }
 
+  componentDidMount() {
+    this.getProfileInfo();
+  }
+
   getProfileInfo = () => {
     axios.get(`${URL}/${this.props.id}`).then(response => {
       this.setState({
@@ -30,10 +34,6 @@ class Profile extends React.Component {
       });
     });
   };
-
-  componentDidMount() {
-    this.getProfileInfo();
-  }
 
   render() {
     return (

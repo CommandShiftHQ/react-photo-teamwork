@@ -7,19 +7,56 @@ import Login from '../components/login';
 import TokenManager from '../utils/token-manager';
 import ImageDetails from '../components/image-details';
 import ImageBrowser from './image-browser';
+import ImageUpload from './upload';
+import axios from 'axios';
 
+const URL = 'http://mcr-codes-image-sharing-api.herokuapp.com';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       user: null,
+      images: [],
+      userImages: [],
+      error: false,
     };
   }
 
   componentDidMount() {
     if (TokenManager.isTokenValid()) this.handleLogin();
+    this.getImages();
+    this.getUserImages();
   }
+
+  getImages = () => {
+    axios.get(`${URL}/images`)
+      .then(response => {
+        this.setState({ images: response.data });
+      })
+      .catch(() => {
+        this.setState({ error: true });
+        alert('Error. Please try again');
+      });
+  };
+
+  getUserImages = () => {
+    const config = {
+      headers: {
+        'authorization': TokenManager.getToken(),
+        'content-type': 'application/json',
+      },
+    };
+    axios.get(`${URL}/me`, config)
+      .then(response => {
+        this.setState({ userImages: response.data.images });
+      })
+      .catch(() => {
+        this.setState({ error: true });
+        alert('Error. Please try again');
+      });
+  };
+
 
   handleLogin = () => {
     this.setState({ user: TokenManager.getTokenPayload() });
@@ -46,7 +83,7 @@ class App extends React.Component {
         {this.isLoggedIn() ? (
           <Profile id={this.state.user._id} />
         ) : (
-          <div>You are not in</div>
+          <div>You are not logged in.</div>
         )}
 
         <Switch>
@@ -62,13 +99,23 @@ class App extends React.Component {
           />
           <Route
             exact
-            path="/images"
-            component={ImageBrowser}
+            path="/upload"
+            component={ImageUpload}
           />
           <Route
             exact
-            path="/image"
-            component={ImageDetails}
+            path="/gallery"
+            render={props => <ImageBrowser {...props} images={this.state.userImages} />}
+          />
+          <Route
+            exact
+            path="/"
+            render={props => <ImageBrowser {...props} images={this.state.images} />}
+          />
+          <Route
+            exact
+            path="/image/:id"
+            render={(props) => <ImageDetails {...props} />}
           />
           <Route exact path="/sign-up" component={SignUp} />
 
@@ -77,6 +124,6 @@ class App extends React.Component {
       </React.Fragment>
     );
   }
-}
+};
 
 export default App;

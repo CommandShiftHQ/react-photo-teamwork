@@ -9,7 +9,7 @@ class ImageDetails extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      imageId: '5c01bcadf4318f00164926fb',
+      imageId: '',
       user: {},
       src: '',
       thumb: '',
@@ -33,7 +33,7 @@ class ImageDetails extends React.Component {
   };
 
   componentDidMount() {
-    axios.get(`${URL}/images/${this.state.imageId}`)
+    axios.get(`${URL}/images/${this.props.match.params.id}`)
       .then(response => {
         this.setState({
           user: response.data.user,
@@ -54,6 +54,7 @@ class ImageDetails extends React.Component {
   }
 
   render() {
+    console.log(this.props.match);
     const {
       imageId,
       user,
