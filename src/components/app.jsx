@@ -7,7 +7,7 @@ import Login from '../components/login';
 import TokenManager from '../utils/token-manager';
 import ImageDetails from '../components/image-details';
 import ImageBrowser from './image-browser';
-
+import '../css/app.css';
 
 class App extends React.Component {
   constructor(props) {

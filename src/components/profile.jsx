@@ -1,7 +1,6 @@
 import React from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import ImageDetails from './image-details';
 
 const URL = 'http://mcr-codes-image-sharing-api.herokuapp.com/users/';
 
