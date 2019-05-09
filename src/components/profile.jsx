@@ -41,7 +41,7 @@ class Profile extends React.Component {
   };
 
   render() {
-    return (
+     return (
       <div className="profile-info">
         <div className="user-info">
           <img src={this.state.user.avatar} height="150" width="150 " />
