@@ -1,0 +1,11 @@
+.imageDetails {
+  display: flex;
+  justify-content: space-around;
+  height: 90vh;
+}
+
+@media all and (max-width: 640px) {
+  .image-details {
+    flex-direction: column;
+  }
+}

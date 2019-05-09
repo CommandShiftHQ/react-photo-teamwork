@@ -7,10 +7,12 @@ import Login from '../components/login';
 import TokenManager from '../utils/token-manager';
 import ImageDetails from '../components/image-details';
 import ImageBrowser from './image-browser';
+import '../css/app.css';
 import ImageUpload from './upload';
 import axios from 'axios';
 
 const URL = 'http://mcr-codes-image-sharing-api.herokuapp.com';
+
 
 class App extends React.Component {
   constructor(props) {

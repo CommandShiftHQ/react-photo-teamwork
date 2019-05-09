@@ -1,0 +1,11 @@
+.profile-name {
+  border-bottom: 2px solid #f2f2f2;
+  flex-basis: 60px;
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+}
+
+.name {
+  margin: 20px;
+}
