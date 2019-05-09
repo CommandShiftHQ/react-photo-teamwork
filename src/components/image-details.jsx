@@ -93,7 +93,6 @@ class ImageDetails extends React.Component {
     }
 
     return (
-<<<<<<< HEAD
       <div className="img-details">
         <Image src={src} user={user.firstName} className="full-img" />
         <div className="img-text">
@@ -115,26 +114,6 @@ class ImageDetails extends React.Component {
             onSubmit={this.handleCommentSubmit}
           />
         </div>
-=======
-      <div>
-        <Image src={src} user={user.firstName} />
-        <span>
-          <FontAwesomeIcon icon="comment" className="icon-comment" />
-          {comments.length}
-        </span>
-        <Likes
-          likes={likes}
-          imageLike={this.handleImageLike}
-        />
-        <span>#{tags}</span>
-        <Comments
-          className="comments"
-          comments={comments}
-          isLiked={isLiked}
-          onLike={this.handleCommentLike}
-          onSubmit={this.handleCommentSubmit}
-        />
->>>>>>> a63be0d0d894cad4ac37518e6fd6b0fb9c8530f8
       </div>
     );
   }
