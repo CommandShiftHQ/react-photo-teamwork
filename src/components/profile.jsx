@@ -5,11 +5,11 @@ import '../css/profile.css';
 
 const container = {
   display: 'flex',
-  justifyContent: 'flex-start',
-  'flex-wrap': 'wrap',
+  // justifyContent: 'flex-start',
+  flewWrap: 'wrap',
   background: 'white',
   padding: '5px',
-  'justify-content': 'center',
+  justifyContent: 'center',
 };
 
 const imagesInUser = {
