@@ -37,11 +37,7 @@ class ImageDetails extends React.Component {
   };
 
   handleCommentSubmit = (comment) => {
-<<<<<<< HEAD
-    const URL = `http://mcr-codes-image-sharing-api.herokuapp.com/images/${this.state.imageId}/comments`;
-=======
     const commentURL = `${URL}/images/${this.state.imageId}/comments`;
->>>>>>> a63be0d0d894cad4ac37518e6fd6b0fb9c8530f8
     const config = {
       headers: {
         authorization: TokenManager.getToken(),
