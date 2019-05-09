@@ -1,7 +1,51 @@
+.img-details {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 10px;
+}
+
+.img-details div {
+    display: inline-block;
+}
+
+.img-text {
+    display: inline-block;
+    width: calc(100% - 510px);
+    vertical-align: top;
+}
+
 .icon-heart {
     color: red;
 }
 
 .icon-heart:hover {
     transform: scale(1.5);
+}
+
+.full-img {
+    padding: 10px;
+    text-align: start;
+}
+
+.img-details .user-name {
+    display:block;
+}
+
+.likes-comments {
+    display: block;
+    width: 100%;
+    padding: 10px 0;
+}
+.likes-comments span, .likes-comments div {
+    padding: 5px;
+}
+
+.likes-comments input {
+    width: 100%;
+    display: inline-block;
+}
+
+.img-text button {
+    width: 20%;
+    display: inline-block;
 }

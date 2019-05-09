@@ -5,11 +5,10 @@ import '../css/profile.css';
 
 const container = {
   display: 'flex',
-  justifyContent: 'flex-start',
   flex: 'wrap',
   background: 'white',
   padding: '5px',
-  'justify-content': 'center',
+  justifyContent: 'center',
 };
 
 const imagesInUser = {
@@ -42,24 +41,21 @@ class Profile extends React.Component {
   };
 
   render() {
-    return (
+     return (
       <div className="profile-info">
-        <div className="name">
-          Name: {this.state.user.firstName} {this.state.user.lastName}
-          <div className="user-info">
-            <img src={this.state.user.avatar} height="150" width="150 " />
-            <div className="Name">
+        <div className="user-info">
+          <img src={this.state.user.avatar} height="150" width="150 " />
+          <div className="Name">
             Name: {this.state.user.firstName} {this.state.user.lastName}
-            </div>
-            <div className="bio">Bio: {this.state.user.bio} </div>
           </div>
-          <div style={container}>
-            {this.state.user.images.map(image => (
-              <Link to={`/image/${image._id}`} key={image._id}>
-                <img style={imagesInUser} src={image.src} />
-              </Link>
-            ))}
-          </div>
+          <div className="bio">Bio: {this.state.user.bio} </div>
+        </div>
+        <div style={container}>
+          {this.state.user.images.map(image => (
+            <Link to={`/image/${image._id}`} key={image._id}>
+              <img style={imagesInUser} src={image.src} />
+            </Link>
+          ))}
         </div>
       </div>
     );
