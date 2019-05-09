@@ -37,14 +37,19 @@ class ImageDetails extends React.Component {
   };
 
   handleCommentSubmit = (comment) => {
+<<<<<<< HEAD
     const URL = `http://mcr-codes-image-sharing-api.herokuapp.com/images/${this.state.imageId}/comments`;
+=======
+    const commentURL = `${URL}/images/${this.state.imageId}/comments`;
+>>>>>>> a63be0d0d894cad4ac37518e6fd6b0fb9c8530f8
     const config = {
       headers: {
         authorization: TokenManager.getToken(),
         'content-type': 'application/json',
       },
     };
-    axios.post(URL, { content: comment }, config)
+    console.log(commentURL);
+    axios.post(commentURL, { content: comment }, config)
       .then(response => console.log(response.data))
       .catch((error) => console.log(error));
   };
@@ -59,6 +64,7 @@ class ImageDetails extends React.Component {
     axios.get(`${URL}/images/${this.props.match.params.id}`)
       .then(response => {
         this.setState({
+          imageId: response.data._id,
           user: response.data.user,
           src: response.data.src,
           thumb: response.data.thumb,
@@ -69,15 +75,10 @@ class ImageDetails extends React.Component {
           likes: response.data.likes,
           isLiked: response.data.isLiked,
         });
-      })
-      .catch(err => {
-        console.log(err);
       });
   }
 
   render() {
-    console.log('heyhey');
-    console.log(this.state);
     const {
       imageId,
       user,
@@ -96,6 +97,7 @@ class ImageDetails extends React.Component {
     }
 
     return (
+<<<<<<< HEAD
       <div className="img-details">
         <Image src={src} user={user.firstName} className="full-img" />
         <div className="img-text">
@@ -117,6 +119,26 @@ class ImageDetails extends React.Component {
             onSubmit={this.handleCommentSubmit}
           />
         </div>
+=======
+      <div>
+        <Image src={src} user={user.firstName} />
+        <span>
+          <FontAwesomeIcon icon="comment" className="icon-comment" />
+          {comments.length}
+        </span>
+        <Likes
+          likes={likes}
+          imageLike={this.handleImageLike}
+        />
+        <span>#{tags}</span>
+        <Comments
+          className="comments"
+          comments={comments}
+          isLiked={isLiked}
+          onLike={this.handleCommentLike}
+          onSubmit={this.handleCommentSubmit}
+        />
+>>>>>>> a63be0d0d894cad4ac37518e6fd6b0fb9c8530f8
       </div>
     );
   }
