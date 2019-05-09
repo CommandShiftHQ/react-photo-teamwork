@@ -71,15 +71,10 @@ class ImageDetails extends React.Component {
           likes: response.data.likes,
           isLiked: response.data.isLiked,
         });
-      })
-      .catch(err => {
-        console.log(err);
       });
   }
 
   render() {
-    console.log('heyhey');
-    console.log(this.state);
     const {
       imageId,
       user,
@@ -108,6 +103,7 @@ class ImageDetails extends React.Component {
           likes={likes}
           imageLike={this.handleImageLike}
         />
+        <span>#{tags}</span>
         <Comments
           className="comments"
           comments={comments}
