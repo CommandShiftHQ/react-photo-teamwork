@@ -6,7 +6,6 @@ import CommentForm from './comment-form';
 import '../css/image-info.css';
 
 const ImageInfo = (props) => {
-  console.log(props);
   return (
     <div className="image-info">
       <ProfileName user={props.user} />

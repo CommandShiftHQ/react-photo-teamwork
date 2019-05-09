@@ -33,22 +33,37 @@ class ImageDetails extends React.Component {
   handleCommentSubmit = (comment) => {
     if (TokenManager.isTokenValid()) {
       const token = TokenManager.getTokenPayload();
-      // console.log(this.props.match.params.id);
-      axios.post(`${URL}/images/${this.props.match.params.id}/comments`, {
-        comments: {
-          content: comment,
-          timestamp: token.iat,
-          author: {
-            avatar: token.avatar,
-            bio: token.bio,
-            firstName: token.firstName,
-            lastName: token.lastName,
-            _id: token._id,
-          },
+      const authorizationToken = TokenManager.getToken();
+      
+      // const postData = {
+      //   comments: {
+      //     content: comment,
+      //     timestamp: token.iat,
+      //     author: {
+      //       avatar: token.avatar,
+      //       bio: token.bio,
+      //       firstName: token.firstName,
+      //       lastName: token.lastName,
+      //       _id: token._id,
+      //     },
+      //   },
+      // };
+
+      const postData = {
+        content: comment,
+      };
+
+      const axiosHeaders = {
+        headers: {
+          Authorization: authorizationToken,
         },
-      })
+      };
+      axios.post(
+        `${URL}/images/${this.props.match.params.id}/comments`,
+        postData, axiosHeaders
+      )
         .then(response => {
-          // console.log(response);
+          this.getAPIInfo();
         })
         .catch(error => {
           console.log(error, 'error');
@@ -58,7 +73,7 @@ class ImageDetails extends React.Component {
     }
   };
 
-  componentDidMount() {
+  getAPIInfo = () => {
     axios.get(`${URL}/images/${this.props.match.params.id}`)
       .then(response => {
         this.setState({
@@ -72,11 +87,14 @@ class ImageDetails extends React.Component {
           likes: response.data.likes,
           isLiked: response.data.isLiked,
         });
-        console.log(this.state.isLiked);
       })
       .catch(err => {
         console.log(err);
       });
+  }
+
+  componentDidMount() {
+    this.getAPIInfo();
   }
 
   render() {

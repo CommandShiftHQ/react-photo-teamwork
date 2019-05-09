@@ -17,7 +17,8 @@ class CommentForm extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    this.props.handleAddComment({ content: this.state.newComment, likes: 0 });
+    // console.log(this.state.newComment);
+    this.props.handleAddComment(this.state.newComment);
   };
 
   render() {

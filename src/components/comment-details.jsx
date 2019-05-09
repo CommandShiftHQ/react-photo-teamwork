@@ -3,7 +3,6 @@ import Comment from './comment';
 import '../css/comment-details.css';
 
 const CommentDetails = (props) => {
-  console.log(props);
   return (
     <div className="comment-details">
       {props.comments.map(comment => {
