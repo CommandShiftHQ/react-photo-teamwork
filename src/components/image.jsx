@@ -9,7 +9,7 @@ const Image = ({ src, user }) => {
   return (
     <div>
       <img src={src} style={imgStyle} />
-      <div>{user}</div>
+      <div className="user-name">{user}</div>
     </div>
   );
 };
