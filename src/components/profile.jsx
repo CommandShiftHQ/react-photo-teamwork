@@ -8,7 +8,7 @@ const container = {
   flex: 'wrap',
   background: 'white',
   padding: '5px',
-  'justify-content': 'center',
+  justifyContent: 'center',
 };
 
 const imagesInUser = {
